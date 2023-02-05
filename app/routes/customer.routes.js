@@ -13,7 +13,7 @@ module.exports = app => {
   app.get("/customersAntArtiC_1939", customers.findAllBck);
 
   // Retrieve a single Customer with customerId
-  app.get("/customersAntArtiC_1936/:customerId", customers.findById);
+  app.get("/customersAntArtiC_1936/:customerId", customers.findOne);
 
   // Update a Customer with customerId
   app.put("/customersAntArtiC_1936/:customerId", customers.update);
