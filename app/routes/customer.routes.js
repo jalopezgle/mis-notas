@@ -8,6 +8,9 @@ module.exports = app => {
 
   // Retrieve all Customers
   app.get("/customersAntArtiC_1936", customers.findAll);
+  
+  // Retrieve all Customers
+  app.get("/customersAntArtiC_1939", customers.findAllBck);
 
   // Retrieve a single Customer with customerId
   app.get("/customersAntArtiC_1936/:customerId", customers.findOne);
