@@ -53,7 +53,7 @@ exports.findAllBck = (req, res) => {
 
 // Find a single Customer with a customerId
 exports.findOne = (req, res) => {
-  Customer.findById(req.params.customerId, (err, data) => {
+  Customer.findOne(req.params.customerId, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
