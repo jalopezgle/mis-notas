@@ -39,6 +39,18 @@ exports.findAll = (req, res) => {
   });
 };
 
+exports.findAllBck = (req, res) => {
+  Customer.getAllBck((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      });
+    else res.send(JSON.stringify (data, null, '<br>'));
+  });
+};
+
+
 // Find a single Customer with a customerId
 exports.findOne = (req, res) => {
   Customer.findById(req.params.customerId, (err, data) => {
