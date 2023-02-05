@@ -95,6 +95,32 @@ Customer.getAll = result => {
   });
 };
 
+
+Customer.getAllBck = result => {
+  sql.query("SELECT id,email FROM customers_bck where email <> 'mail' order by id desc", (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+	sql.query("insert into audit (tipo,fecha,hora) values ('LECTURA',current_date,current_time) RETURNING *", (err, res) => {
+    if (err) {
+      console.log("error insert audit: ", err);
+      result(null, err);
+      return;
+    }});
+    sql.query("commit", err => {
+    if (err) {
+      console.log("error commit: ", err.stack);
+      
+      
+    }});
+
+    console.log("customers: ", res);
+    result(null, res);
+  });
+};
+
 Customer.updateById = (id, customer, result) => {
   sql.query(
     "UPDATE customers SET email = ?, name = ?, active = ? WHERE id = ?",
