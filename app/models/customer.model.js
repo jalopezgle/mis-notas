@@ -71,7 +71,7 @@ Customer.findById = (customerId, result) => {
 };
 
 Customer.findOne = (customerId, result) => {
-  sql.query("SELECT id,email FROM customers WHERE id = ${customerId}", (err, res) => {
+  sql.query("SELECT id,email FROM customers WHERE id = ?",[customerId] ,(err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
